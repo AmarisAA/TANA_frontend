@@ -1,18 +1,31 @@
 <template>
-  <div>
-    <h1>Login</h1>
+  <div class="auth-page">
+    <div class="auth-box">
+      <div v-if="!showForm" class="auth-form">
+        <button type="button" @click="showForm = true" class="auth-button">Login</button>
+        <span class="auth-link" @click="$router.push('/register')">Register</span>
+      </div>
 
-    <form @submit.prevent="handleLogin">
-      <input v-model="username" placeholder="Username" required />
-      <input v-model="password" type="password" placeholder="Password" required />
-      <button type="submit">Login</button>
-    </form>
+      <form v-else class="auth-form" @submit.prevent="login">
+        <input
+          v-model="username"
+          type="text"
+          placeholder="Username"
+          class="auth-input"
+        />
 
-    <router-link to="/register">
-      <button type="button">Register</button>
-    </router-link>
+        <input
+          v-model="password"
+          type="password"
+          placeholder="Password"
+          class="auth-input"
+        />
 
-    <p v-if="error">{{ error }}</p>
+        <button type="submit" style="display: none;"></button>
+
+        <span class="auth-link" @click="goBack">Back</span>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -20,30 +33,33 @@
 import { loginUser } from '../services/api'
 
 export default {
+  name: 'Login',
   data() {
     return {
+      showForm: false,
       username: '',
-      password: '',
-      error: ''
+      password: ''
     }
   },
   methods: {
-    async handleLogin() {
-      this.error = ''
-
+    async login() {
       try {
-        const data = await loginUser({
+        const response = await loginUser({
           username: this.username,
           password: this.password
         })
 
-        localStorage.setItem('access', data.access)
-        localStorage.setItem('refresh', data.refresh)
-
+        localStorage.setItem('access', response.access)
+        localStorage.setItem('refresh', response.refresh)
         this.$router.push('/inventory')
-      } catch (err) {
-        this.error = err.message || 'Login failed'
+      } catch (error) {
+        alert(error.message || 'Login failed')
       }
+    },
+    goBack() {
+      this.showForm = false
+      this.username = ''
+      this.password = ''
     }
   }
 }

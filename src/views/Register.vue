@@ -1,20 +1,18 @@
 <template>
-  <div>
-    <h1>Register</h1>
-
-    <form @submit.prevent="handleRegister">
-      <input v-model="username" placeholder="Username" required />
-      <input v-model="first_name" placeholder="First Name" required />
-      <input v-model="last_name" placeholder="Last Name" required />
-      <input v-model="phone_number" placeholder="Phone Number" />
-      <input v-model="email" type="email" placeholder="Email" required />
-      <input v-model="password" type="password" placeholder="Password" required />
-      <input v-model="password2" type="password" placeholder="Re-enter Password" required />
-      <button type="submit">Register</button>
-    </form>
-
-    <p v-if="message">{{ message }}</p>
-    <p v-if="error">{{ error }}</p>
+  <div class="auth-page">
+    <div class="auth-box">
+      <div class="auth-form">
+        <input v-model="username" type="text" placeholder="Username" class="auth-input" />
+        <input v-model="first_name" type="text" placeholder="First Name" class="auth-input" />
+        <input v-model="last_name" type="text" placeholder="Last Name" class="auth-input" />
+        <input v-model="phone_number" type="text" placeholder="Phone Number" class="auth-input" />
+        <input v-model="email" type="email" placeholder="Email" class="auth-input" />
+        <input v-model="password" type="password" placeholder="Password" class="auth-input" />
+        <input v-model="password2" type="password" placeholder="Re-enter Password" class="auth-input" />
+        <button type="button" @click="register" class="auth-button">Register</button>
+        <span class="auth-link" @click="$router.push('/')">Back</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -22,6 +20,7 @@
 import { registerUser } from '../services/api'
 
 export default {
+  name: 'Register',
   data() {
     return {
       username: '',
@@ -30,15 +29,15 @@ export default {
       phone_number: '',
       email: '',
       password: '',
-      password2: '',
-      message: '',
-      error: ''
+      password2: ''
     }
   },
   methods: {
-    async handleRegister() {
-      this.message = ''
-      this.error = ''
+    async register() {
+      if (this.password !== this.password2) {
+        alert('Passwords do not match')
+        return
+      }
 
       try {
         await registerUser({
@@ -51,10 +50,9 @@ export default {
           password2: this.password2
         })
 
-        this.message = 'Registered successfully'
         this.$router.push('/')
-      } catch (err) {
-        this.error = err.message || 'Register failed'
+      } catch (error) {
+        alert(error.message || 'Registration failed')
       }
     }
   }
