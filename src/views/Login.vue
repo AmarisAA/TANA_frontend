@@ -2,10 +2,16 @@
   <div class="auth-page">
     <div class="auth-box">
       <div v-if="!showForm" class="auth-form">
-        <button type="button" @click="showForm = true" class="auth-button">Login</button>
-        <span class="auth-link" @click="$router.push('/register')">Register</span>
+        <button type="button" @click="showForm = true" class="auth-button">
+          Login
+        </button>
+
+        <span class="auth-link" @click="$router.push('/register')">
+          Register
+        </span>
       </div>
 
+      <!-- Login form -->
       <form v-else class="auth-form" @submit.prevent="login">
         <input
           v-model="username"
@@ -21,9 +27,15 @@
           class="auth-input"
         />
 
-        <button type="submit" style="display: none;"></button>
+        <button
+          type="submit"
+          class="auth-button"
+          :disabled="!username || !password"
+        >
+          Login
+        </button>
 
-        <span class="auth-link" @click="goBack">Back</span>
+        <span class="auth-link" @click="goBack"> Back </span>
       </form>
     </div>
   </div>
@@ -51,11 +63,13 @@ export default {
 
         localStorage.setItem('access', response.access)
         localStorage.setItem('refresh', response.refresh)
+
         this.$router.push('/inventory')
       } catch (error) {
         alert(error.message || 'Login failed')
       }
     },
+
     goBack() {
       this.showForm = false
       this.username = ''

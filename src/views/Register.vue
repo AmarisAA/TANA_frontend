@@ -7,6 +7,7 @@
         <input v-model="last_name" type="text" placeholder="Last Name" class="auth-input" />
         <input v-model="phone_number" type="text" placeholder="Phone Number" class="auth-input" />
         <input v-model="email" type="email" placeholder="Email" class="auth-input" />
+        <input v-model="restaurant_name" type="text" placeholder="Restaurant Name" class="auth-input" />
         <input v-model="password" type="password" placeholder="Password" class="auth-input" />
         <input v-model="password2" type="password" placeholder="Re-enter Password" class="auth-input" />
         <button type="button" @click="register" class="auth-button">Register</button>
@@ -28,6 +29,7 @@ export default {
       last_name: '',
       phone_number: '',
       email: '',
+      restaurant_name: '',
       password: '',
       password2: ''
     }
@@ -46,6 +48,7 @@ export default {
           last_name: this.last_name,
           phone_number: this.phone_number,
           email: this.email,
+          restaurant_name: this.restaurant_name,
           password: this.password,
           password2: this.password2
         })
