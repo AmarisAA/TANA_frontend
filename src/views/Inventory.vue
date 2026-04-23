@@ -187,7 +187,7 @@ export default {
 </script>
 <style scoped>
 h2, h3 {
-  color: #5f82c3;
+  color: #002872;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -263,7 +263,7 @@ button {
 }
 
 .add-btn {
-  background-color: #5f82c3;
+  background-color: #002872;
   color: white;
   border: none;
   border-radius: 10px;
@@ -272,7 +272,7 @@ button {
 }
 
 .user-btn {
-  background-color: #5f82c3;
+  background-color: #002872;
   color: white;
   border: none;
   border-radius: 10px;

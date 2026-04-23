@@ -1,4 +1,7 @@
 <template>
+  <h2>Welcome!</h2>
+  <img src="/src/assets/mrChef.png" alt="Mr Chef" class="header-img" /> 
+  <h3>Please register to continue:</h3>
   <div class="auth-page">
     <div class="auth-box">
       <div class="auth-form">
@@ -61,3 +64,29 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+h2{
+  color: #002872;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h3 {
+  color: #002872;
+  margin-top: 40px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.header-img {
+  display: block;
+  margin: 5px auto;     /* less empty space */
+  width: 180px;         /* bigger */
+  height: 180px;        /* keeps it balanced */
+  object-fit: cover;
+  border-radius: 20px;   /* rounded edges */
+}
+</style>
+

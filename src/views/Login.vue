@@ -1,4 +1,5 @@
 <template>
+      <img src="/src/assets/carmy.png" alt="thebear" class="header-img" />
   <div class="auth-page">
     <div class="auth-box">
       <div v-if="!showForm" class="auth-form">
@@ -78,3 +79,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.header-img {
+  display: block;
+  margin: 30px auto;     /* less empty space */
+  width: 350px;         /* bigger */
+  height: 180px;        /* keeps it balanced */
+  object-fit: cover;
+}
+</style>
+
