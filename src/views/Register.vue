@@ -82,11 +82,11 @@ h3 {
 
 .header-img {
   display: block;
-  margin: 5px auto;     /* less empty space */
-  width: 180px;         /* bigger */
-  height: 180px;        /* keeps it balanced */
+  margin: 5px auto;    
+  width: 180px;         
+  height: 180px;        
   object-fit: cover;
-  border-radius: 20px;   /* rounded edges */
+  border-radius: 20px;
 }
 </style>
 

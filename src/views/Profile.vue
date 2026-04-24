@@ -1,12 +1,15 @@
 <template>
   <div class="top-bar">
-  <button class="add-btn" @click="openAddForm">Add Inventory</button>
-  <button class="user-btn" @click="goToProfile">User</button>
+    <h1>*restaurant name</h1>
+  </div>
+  <div class="profile">
+      <img src="../assets/profile.png" alt="Profile Image" />
+    <div class="profile-info">
+      <h2>acc owner name</h2>
+      <p>Email: here@example.com</p>
+      <p>Phone: (123) 456-7890</p>
+    </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Profile'
-}
-</script>
+<script></script>

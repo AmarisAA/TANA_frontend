@@ -83,9 +83,9 @@ export default {
 <style scoped>
 .header-img {
   display: block;
-  margin: 30px auto;     /* less empty space */
-  width: 350px;         /* bigger */
-  height: 180px;        /* keeps it balanced */
+  margin: 30px auto;    
+  width: 350px;         
+  height: 180px;        
   object-fit: cover;
 }
 </style>
