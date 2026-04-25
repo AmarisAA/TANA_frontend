@@ -1,4 +1,8 @@
 <template>
+  <h2>Welcome!</h2>
+  <img src="/src/assets/mrChef.png" alt="Mr Chef" class="header-img" /> 
+  <h3>Please register to continue:</h3>
+
   <div class="auth-page">
     <div class="auth-box">
       <div class="auth-form">
@@ -7,9 +11,11 @@
         <input v-model="last_name" type="text" placeholder="Last Name" class="auth-input" />
         <input v-model="phone_number" type="text" placeholder="Phone Number" class="auth-input" />
         <input v-model="email" type="email" placeholder="Email" class="auth-input" />
+        <input v-model="restaurant_name" type="text" placeholder="Restaurant Name" class="auth-input" />
         <input v-model="password" type="password" placeholder="Password" class="auth-input" />
         <input v-model="password2" type="password" placeholder="Re-enter Password" class="auth-input" />
-        <button type="button" @click="register" class="auth-button">Register</button>
+
+        <button @click="register" class="auth-button">Register</button>
         <span class="auth-link" @click="$router.push('/')">Back</span>
       </div>
     </div>
@@ -17,7 +23,7 @@
 </template>
 
 <script>
-import { registerUser } from '../services/api'
+import { registerUser, getUsers } from '../services/api'
 
 export default {
   name: 'Register',
@@ -28,6 +34,7 @@ export default {
       last_name: '',
       phone_number: '',
       email: '',
+      restaurant_name: '',
       password: '',
       password2: ''
     }
@@ -40,17 +47,37 @@ export default {
       }
 
       try {
-        await registerUser({
+        const profileData = {
           username: this.username,
           first_name: this.first_name,
           last_name: this.last_name,
           phone_number: this.phone_number,
           email: this.email,
+          restaurant_name: this.restaurant_name
+        }
+
+        localStorage.setItem('profile', JSON.stringify(profileData))
+
+        const createdUser = await registerUser({
+          ...profileData,
           password: this.password,
           password2: this.password2
         })
 
-        this.$router.push('/')
+        let pk = createdUser.pk || createdUser.id
+
+        if (!pk) {
+          const users = await getUsers()
+          const foundUser = users.find(user => user.username === this.username)
+          pk = foundUser ? foundUser.pk : null
+        }
+
+        localStorage.setItem('profile', JSON.stringify({
+          ...profileData,
+          pk: pk
+        }))
+
+        this.$router.push('/profile')
       } catch (error) {
         alert(error.message || 'Registration failed')
       }
@@ -58,3 +85,28 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+h2 {
+  color: #002872;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h3 {
+  color: #002872;
+  margin-top: 40px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.header-img {
+  display: block;
+  margin: 5px auto;    
+  width: 180px;         
+  height: 180px;        
+  object-fit: cover;
+  border-radius: 20px;
+}
+</style>
