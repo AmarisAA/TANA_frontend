@@ -9,7 +9,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 180px;
+  padding-top: 50px;
 }
 
 .auth-box {
@@ -47,12 +47,14 @@ body {
 }
 
 .auth-button {
-  width: 100%;
-  background-color: #5f82c3;
+  display: block;
+  margin: 40px auto 0;
+  width: 40%;
+  background-color: #01266b;
   color: white;
   border: none;
-  border-radius: 16px;
-  padding: 12px 14px;
+  border-radius: 30px;
+  padding: 14px;
   font-size: 1rem;
   cursor: pointer;
 }
@@ -63,4 +65,8 @@ body {
   cursor: pointer;
   font-size: 0.95rem;
   text-align: center;
+}
+
+.top-bar {
+  padding-top: 20px; /* creates space from the top */
 }
