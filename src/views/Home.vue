@@ -15,17 +15,17 @@
 
         <figure>
             <img src="/src/assets/restaurant5.png" class="stock-img" />
-            <figcaption>"Running a restaurant couldn't get easier" - Bob's Burgers</figcaption>
+            <figcaption>"TANA is BANANAS. B A N A N A S" - Omaha Taphouse</figcaption>
         </figure>
     </div>
 
     <div class="info-section">
     <div class="info-box left-box">
-        <p>Monitor your stock.</p>
-        <p>Serve your best.</p>
-        <p>Save room for dessert.</p>
+        <p><strong>Stock your kitchen.</strong></p>
+        <p><strong>Serve your best.</strong></p>
+        <p><strong>Save room for dessert.</strong></p>
         <p>At TANA, we believe that managing your inventory should be as easy as pie. This is why we offer the best inventory management system available--all for free. 
-        <P>Voted as Omaha's Best Inventory Management Solution in for 5 consecutive years!</P>
+        <P>Voted as Omaha's Best Inventory Management Solution for 5 consecutive years!</P>
         </p>
     </div>
 
