@@ -12,7 +12,7 @@
         </span>
       </div>
 
-      <!-- Login form -->
+
       <form v-else class="auth-form" @submit.prevent="login">
         <input
           v-model="username"

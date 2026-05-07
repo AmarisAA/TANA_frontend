@@ -25,7 +25,7 @@
             <tr v-for="item in inventory" :key="item.pk">
               <td>{{ item.item_name }}</td>
               <td>{{ item.quantity }}</td>
-              <td>{{ item.category }}</td>
+              <td>{{ getCategoryName(item.category) }}</td>
               <td>{{ item.need_restock ? "Yes" : "No" }}</td>
               <td>
                 <button @click="openEditForm(item)">Manage</button>
@@ -55,7 +55,16 @@
         <input v-model="editForm.quantity" type="number" />
 
         <label>Category</label>
-        <input v-model="editForm.category" type="text" />
+        <select v-model.number="editForm.category">
+          <option disabled value="">Select a category</option>
+          <option
+            v-for="category in categories"
+            :key="category.pk"
+            :value="category.pk"
+          >
+            {{ category.category_name || category.name }}
+         </option>
+        </select>
 
         <label>Need Restock</label>
         <select v-model="editForm.need_restock">
@@ -77,6 +86,7 @@
 <script>
 import {
   getInventory,
+  getCategories,
   createInventory,
   updateInventory,
   deleteInventory as deleteInventoryAPI,
@@ -88,6 +98,7 @@ export default {
   data() {
     return {
       inventory: [],
+      categories: [],
       showEditModal: false,
       isAdding: false,
       editForm: {
@@ -97,13 +108,14 @@ export default {
         quantity: "",
         category: "",
         need_restock: false,
-        restaurant: "",
+        restaurant: 1,
       },
     };
   },
 
   mounted() {
     this.getInventory();
+    this.getCategories();
   },
 
   methods: {
@@ -133,6 +145,14 @@ export default {
       } catch (error) {
         console.error("Error retrieving inventory:", error);
       }
+    },
+
+    getCategoryName(categoryPk) {
+      const category = this.categories.find(
+        category => Number(category.pk) === Number(categoryPk)
+      );
+
+      return category ? category.category_name || category.name : categoryPk;
     },
 
     openEditForm(item) {
@@ -168,6 +188,15 @@ export default {
       } catch (error) {
         console.error("Error updating inventory:", error);
         alert("Failed to update inventory item");
+      }
+    },
+
+    async getCategories() {
+    try {
+      this.categories = await getCategories();
+      console.log("categories result:", this.categories);
+      } catch (error) {
+      console.error("Error retrieving categories:", error);
       }
     },
 

@@ -143,3 +143,18 @@ export async function createInventory(data) {
 
   return result;
 }
+
+export async function getCategories() {
+  const response = await fetch(`${API_URL}/api/categories/`, {
+    method: "GET",
+    headers: getAuthHeaders(),
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error("Failed to retrieve categories");
+  }
+
+  return result;
+}
