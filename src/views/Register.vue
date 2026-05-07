@@ -23,10 +23,11 @@
 </template>
 
 <script>
-import { registerUser, getUsers } from '../services/api'
+import { registerUser } from '../services/api'
 
 export default {
   name: 'Register',
+
   data() {
     return {
       username: '',
@@ -39,6 +40,7 @@ export default {
       password2: ''
     }
   },
+
   methods: {
     async register() {
       if (this.password !== this.password2) {
@@ -56,26 +58,16 @@ export default {
           restaurant_name: this.restaurant_name
         }
 
-        const createdUser = await registerUser({
+        await registerUser({
           ...profileData,
           password: this.password,
           password2: this.password2
         })
 
-        let pk = createdUser.pk || createdUser.id
+        localStorage.setItem('profile', JSON.stringify(profileData))
 
-        if (!pk) {
-          const users = await getUsers()
-          const foundUser = users.find(user => user.username === this.username)
-          pk = foundUser ? foundUser.pk : null
-        }
-
-        localStorage.setItem('profile', JSON.stringify({
-          ...profileData,
-          pk: pk
-        }))
-
-        this.$router.push('/profile')
+        alert('Registration successful. Please log in.')
+        this.$router.push('/login')
       } catch (error) {
         alert(error.message || 'Registration failed')
       }
