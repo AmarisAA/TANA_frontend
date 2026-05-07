@@ -45,7 +45,6 @@ export async function registerUser(data) {
   return result;
 }
 
-<<<<<<< HEAD
 export async function getUsers() {
   const response = await fetch(`${API_URL}/api/users/`, {
     method: "GET",
@@ -85,8 +84,6 @@ export async function updateUser(pk, data) {
   return result;
 }
 
-=======
->>>>>>> d553c2333da894d00b8d8563fe11ee9a3f064968
 export async function getInventory() {
   const response = await fetch(`${API_URL}/api/inventory/`, {
     method: "GET",
@@ -138,18 +135,11 @@ export async function createInventory(data) {
     body: JSON.stringify(data),
   });
 
-<<<<<<< HEAD
   const result = await response.json();
 
-=======
->>>>>>> d553c2333da894d00b8d8563fe11ee9a3f064968
   if (!response.ok) {
     throw new Error(JSON.stringify(result));
   }
 
   return result;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d553c2333da894d00b8d8563fe11ee9a3f064968

@@ -1,11 +1,8 @@
 <template>
   <h2>Welcome!</h2>
-  <img src="/src/assets/mrChef.png" alt="Mr Chef" class="header-img" /> 
+  <img src="/src/assets/mrChef.png" alt="Mr Chef" class="header-img" />
   <h3>Please register to continue:</h3>
-<<<<<<< HEAD
 
-=======
->>>>>>> d553c2333da894d00b8d8563fe11ee9a3f064968
   <div class="auth-page">
     <div class="auth-box">
       <div class="auth-form">
@@ -56,17 +53,11 @@ export default {
           last_name: this.last_name,
           phone_number: this.phone_number,
           email: this.email,
-<<<<<<< HEAD
           restaurant_name: this.restaurant_name
         }
 
-        localStorage.setItem('profile', JSON.stringify(profileData))
-
         const createdUser = await registerUser({
           ...profileData,
-=======
-          restaurant_name: this.restaurant_name,
->>>>>>> d553c2333da894d00b8d8563fe11ee9a3f064968
           password: this.password,
           password2: this.password2
         })
@@ -94,11 +85,7 @@ export default {
 </script>
 
 <style scoped>
-<<<<<<< HEAD
 h2 {
-=======
-h2{
->>>>>>> d553c2333da894d00b8d8563fe11ee9a3f064968
   color: #002872;
   margin-top: 20px;
   margin-bottom: 30px;
@@ -114,15 +101,10 @@ h3 {
 
 .header-img {
   display: block;
-  margin: 5px auto;    
-  width: 180px;         
-  height: 180px;        
+  margin: 5px auto;
+  width: 180px;
+  height: 180px;
   object-fit: cover;
   border-radius: 20px;
 }
-<<<<<<< HEAD
 </style>
-=======
-</style>
-
->>>>>>> d553c2333da894d00b8d8563fe11ee9a3f064968

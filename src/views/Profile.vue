@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div class="profile-page">
     <h2>Your Profile</h2>
 
@@ -13,22 +12,10 @@
 
       <button v-if="!editMode" @click="editMode = true">Edit Profile</button>
       <button v-else @click="saveProfile">Save Changes</button>
-=======
-  <div class="top-bar">
-    <h1>*restaurant name</h1>
-  </div>
-  <div class="profile">
-      <img src="../assets/profile.png" alt="Profile Image" />
-    <div class="profile-info">
-      <h2>acc owner name</h2>
-      <p>Email: here@example.com</p>
-      <p>Phone: (123) 456-7890</p>
->>>>>>> d553c2333da894d00b8d8563fe11ee9a3f064968
     </div>
   </div>
 </template>
 
-<<<<<<< HEAD
 <script>
 import { updateUser } from '../services/api'
 
@@ -130,6 +117,3 @@ button {
   cursor: pointer;
 }
 </style>
-=======
-<script></script>
->>>>>>> d553c2333da894d00b8d8563fe11ee9a3f064968
